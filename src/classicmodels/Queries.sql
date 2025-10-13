@@ -4,3 +4,9 @@ WHERE p.amount = (
     SELECT MAX(amount)
     FROM payments
 );
+
+SELECT reportsTo, COUNT(*) AS numero_dipendenti
+FROM employees
+GROUP BY reportsTo
+ORDER BY numero_dipendenti DESC
+LIMIT 5;
