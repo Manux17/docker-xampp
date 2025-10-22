@@ -8,8 +8,104 @@
     </head>
     <body>
         <!-- I tag titolo da 1 a 7-->
-         <h1>  Marconi Pieralisi - Jesi </h1>
-         <h3> Sottotitolo </h3>
+        <h1> Marconi Pieralisi - Jesi </h1>
+        <h3> Simulazione del sito della scuola </h3>
+
+        <nav> <!-- tag per la navbar barra orrizzonatale --> 
+            <ul> <!-- elenco non ordinato-->
+                <li><a href=""> Informatica </a></li>
+                
+                <li> <a href="progettoDellAnno.html"> Progetto dell'anno </a></li>
+
+            </ul>
+        </nav>
+        
+        <section name="laboratori"> <!-- tag semantico di sezione: non visualizzato nel sito-->
+        <!-- 4. Elenco numerato: elenco dei laboratori di indirizzo (materie di indirizzo) -->
+        <ol>
+        <li>Laboratorio di Informatica 2-21</li>
+        <li>Laboratorio di Sistemi 2-20</li>
+        <li>Laboratorio di Tpsit 2-19</li>
+        </ol>
+        </section>
+
+        <section name="orario">
+            <p>Orario di lezione</p>
+            <table> <!-- tag tabella -->
+                <tr> <!-- riga  -->
+                    <th> ORARO </th>
+                    <th> Lunedì </th> <!-- riga di intestazione -->
+                    <th> Martedì </th>
+                    <th> Mercoledì </th>
+                    <th> Giovedì </th>
+                    <th> Venerdì </th>
+                    <th> Sabato </th>              
+                </tr>
+    
+                <tr> <!-- riga con le prime ore -->
+                    <td> 1 ora </td>    <!-- tdata   -->
+                    <td rowspan="2"> informatica </td>    <!-- lun   -->
+                    <td rowspan="2"> tpsit </td>    <!-- mar   -->
+                    <td> sistemi </td>    <!-- mer   -->
+                    <td> tpsit </td>    <!-- gio   -->
+                    <td> GPOI </td>    <!-- ven   -->
+                    <td> AI </td>    <!-- sab   -->
+                </tr>
+
+                <tr> <!-- riga con le prime ore -->
+                    <td> 2 ora </td>    <!-- tdata   -->
+
+
+                    <td> inglese </td>    <!-- mer   -->
+                    <td rowspan="2"> scienze motorie </td>    <!-- gio   -->
+                    <td> matematica </td>    <!-- ven   -->
+                    <td rowspan="2"> GPOI </td>    <!-- saba   -->
+                </tr>
+
+                <tr> <!-- riga con le prime ore -->
+                    <td> 3 ora </td>    <!-- tdata   -->
+                    <td rowspan="2"> sistemi </td>    <!-- lun   -->
+                    <td> rec/pot </td>    <!-- mar   -->
+                    <td> italiano </td>    <!-- mer   -->
+
+                    <td rowspan="2"> inglese </td>    <!-- ven   -->                    
+                </tr>
+
+                <tr> <!-- riga con le prime ore -->
+                    <td> 4 ora </td>    <!-- tdata   -->
+
+                    <td> sistemi </td>    <!-- mar   -->
+                    <td rowspan="3"> informatica </td>    <!-- mer   -->
+                    <td> italiano </td>    <!-- gio   -->
+                 
+                    <td> matematica </td>    <!-- sab   -->
+                </tr>
+
+                <tr> <!-- riga con le prime ore -->
+                    <td> 5 ora </td>    <!-- tdata   -->
+                    <td> matematica </td>    <!-- lun   -->
+                    <td> italiano </td>    <!-- mar   -->
+
+                    <td> religione </td>    <!-- gio   -->
+                    <td rowspan="2"> italiano </td>    <!-- ven   -->
+                    <td> informatica </td>    <!-- sab   -->
+                </tr>
+
+                <tr> <!-- riga con le prime ore -->
+                    <td> 6 ora </td>    <!-- tdata   -->
+                    <td> italiano </td>    <!-- lun   -->
+                    <td>  </td>    <!-- mar   -->
+
+                    <td>  </td>    <!-- gio   -->
+
+                    <td>  </td>    <!-- sab   -->
+                </tr>
+
+            </table>
+        </section>
+
+        </section>
+
     </body>
 </html>
 
