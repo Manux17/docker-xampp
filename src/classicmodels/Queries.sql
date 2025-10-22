@@ -33,3 +33,14 @@ FROM offices o NATURAL JOIN employees e
 GROUP BY o.officeCode
 ORDER BY numero_dipendenti DESC
 LIMIT 1;
+
+SELECT reportsTo, COUNT(*) AS numero_dipendenti
+FROM employees
+GROUP BY reportsTo
+HAVING COUNT(*) = (
+    SELECT COUNT(*)
+    FROM employees
+    GROUP BY reportsTo
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
+    );
