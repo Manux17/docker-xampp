@@ -38,11 +38,11 @@ from Casello c
 GROUP by c.codice_casello
 having count(*) = (
         select count(*)
-    from Passaggio p 
+        from Passaggio p 
         join Casello c on p.codice_casello = c.codice_casello
-    group by c.codice_casello
-    order by count(*) desc
-    limit 1);
+        group by c.codice_casello
+        order by count(*) desc
+        limit 1);
 
 
 -- 7. Veicoli che non hanno mai transato in una data regione.
