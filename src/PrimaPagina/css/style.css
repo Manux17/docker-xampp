@@ -24,10 +24,11 @@ nav
     color: black;
 }
 
+/* navbar con la lista non ordinata */
 nav ul
 {
-    display: inline-flex;
-    list-style-type: none;
+    display: inline-flex; /* disposizione orizzontale */
+    list-style-type: none; /* nasconde i punti */
 }
 
 /* Distanziazione elementi della lista */
