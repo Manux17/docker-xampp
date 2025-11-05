@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +10,17 @@
     <!-- 2. Generare la favicon della scuola ed inserirla nella scheda -->
     <link rel="icon" type="image/x-icon" href="immagini/images.png">
     
-    <!-- CSS impostazioni per la tabella Foglio di stile incorporato --> 
+    <!-- CSS --> 
     <link rel="stylesheet" href="css/style.css">
 
-    
+    <!-- Foglio stile incorporato, applica solo a questa pagina -->
     <style type="text/css">
         table, th, td {
             padding: 1em;
             width: fit-content;
             border: 2px solid black;
             border-collapse: collapse;
+            text-align: center;
         }
 
         img { 
@@ -87,6 +88,12 @@
          background-color:silver;
         }
 
+        caption {
+         font-weight: bold;
+         text-align: center;
+         color: red; 
+         }
+        
     </style>
 </head>
 
@@ -107,8 +114,9 @@
       <h1>IIS MARCONI PIERALISI</h1>
       <nav>
          <ul>
+            <li><a href="index.html">HOME</a></li>
             <li><a href="">Informatica</a></li>
-            <li><a href="">Sistemi e rete</a></li>
+            <li><a href="">Sistemi e reti</a></li>
             <li><a href="">Tpsit</a></li>
             <li><a href="">Italiano</a></li>
             <li><a href="">Matematica</a></li>
@@ -118,6 +126,7 @@
             <li><a href="">GPOI</a></li>
             <li><a href="">Religione</a></li>
             <li><a href="progettoDellAnno.html">Progetto dell'anno</a></li>
+            <li><a href="PCTO.html">PCTO</a></li>
           </ul>
       </nav>
    </header>
@@ -151,54 +160,51 @@
           <!-- righe tabella -->
           <tr>
             <td>1a</td>
-            <td class="smot" rowspan="2">Scienze Motorie</td>
             <td class="inf" rowspan="2">Informatica</td>
-            <td class="inf" rowspan="2">Informatica</td>
-            <td class="tps" rowspan="2">Tpsit</td>
-            <td class="mat">Matematica</td>
-            <td class="ita" rowspan="2">Italiano e storia</td>
+            <td class="tps" rowspan="2">TPSIT</td>
+            <td class="sis">Sistemi e Reti</td>
+            <td class="tps">TPSIT</td>
+            <td class="gpoi">GPOI</td>
+            <td class="inf">Informatica</td>
          </tr>
 
          <tr>
             <td>2a</td>
-            <td class="inf">Informatica</td>
+            <td class="ing">Inglese</td>
+            <td class="smot" rowspan="2">Scienze Motorie</td>
+            <td class="mat">Matematica</td>
+            <td class="gpoi" rowspan="2">GPOI</td>
          </tr>
 
          <tr>
             <td>3a</td>
-            <td class="sis" rowspan="2">Sistemi e reti</td>
+            <td class="sis" rowspan="2">Sistemi e Reti</td>
             <td class="pot">Potenziamento</td>
-            <td class="tps">Tpsit</td>
-            <td class="ita" rowspan="2">Italiano e storia</td>
-            <td class="sis">Sistemi e reti</td>
-            <td class="gpoi">GPOI</td>
+            <td class="ita">Italiano e Storia</td>
+            <td class="ing" rowspan="2">Inglese</td>
          </tr>
 
          <tr>
             <td>4a</td>
-            <td class="inf">Informatica</td>
-            <td class="gpoi"rowspan="2">GPOI</td>
-            <td class="ing">Inglese</td>
+            <td class="inf">Sistemi e Reti</td>
+            <td class="inf"rowspan="3">Informatica</td>
+            <td class="ita">Italiano e Storia</td>
             <td class="mat">Matematica</td>
          </tr>
 
          <tr>
             <td>5a</td>
-            <td class="ing"rowspan="2">Inglese</td>
-            <td class="ita">Italiano e storia</td>
             <td class="mat">Matematica</td>
-            <td class="rel">Religione</td>
-            <td class="ita">Italiano e storia</td>
+            <td class="ita">Italiano e Storia</td>
+            <td class="mat">Matematica</td>
+            <td class="ita" rowspan="2">Italiano e Storia</td>
+            <td class="ia">Intelligenza Artificiale</td>
          </tr>
 
          
          <tr>
             <td>6a</td>
-            <td></td>
-            <td class="ia">Intelligenza Artificiale</td>
-            <td></td>
-            <td class="ita">Italiano e storia</td>
-            <td></td>
+            <td class="ita">Italiano e Storia</td>
          </tr>
      </table>
 
@@ -215,13 +221,15 @@
     </section>  
     
 
-       <footer>
-         <p>
-            Indirizzo
-            Via Raffaello Sanzio, 8
-            60035 - JESI (AN)
-         </p>
-
-       </footer>
+    <footer class="barra-fondo">
+      <div class="footer-content">
+          <p class="testo-barra">
+              Sede e Contatti:<br>
+              Telefono: +39 0731 204550<br>
+              Email: <a href="mailto:anis023002@istruzione.it">anis023002@istruzione.it</a><br>
+              Indirizzo: Via Raffaello Sanzio, 8 - 60035 JESI
+          </p>
+      </div>
+  </footer>
 </body>
 </html>

@@ -60,9 +60,45 @@ section
     padding-left: 30px;
 }
 
-footer{
-    padding: 20px;
-    background-color: blue;
-    font-size: 0.5m;
-    color: white    
+/* Footer */
+.barra-fondo {
+    width: 100%;
+    background-color: var(--blu-primario);
+    padding: 1rem !important;
+    color: var(--bianco);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* <--- aggiungi questa */
+    align-items: center;      /* <--- e anche questa */
+}
+
+
+.testo-barra {
+    font-family: 'Font_Light', sans-serif;
+    font-weight: normal;
+}
+
+.testo-barra a {
+    color: var(--blu-secondario);
+    text-decoration: none;
+    text-align: center;
+}
+
+.testo-barra a:hover {
+    text-decoration: underline;
+    text-align: center;
+}
+
+.menu-toggle {
+    display: none; /* Nascondi di default */
 }
