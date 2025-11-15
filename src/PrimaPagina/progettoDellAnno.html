@@ -8,13 +8,26 @@
 
     <!-- CSS --> 
     <link rel="stylesheet" href="css/style.css">
+
+    <style type="text/css">
+        #titolo {
+            text-align: center;
+            text-decoration-line: overline underline;
+            text-decoration-color: red;
+            color: black
+
+        }
+
+        h1 a{
+            color: white
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>IIS MARCONI PIERALISI</h1>
+        <h1><a href="index.html">IIS MARCONI PIERALISI</a></h1>
         <nav>
            <ul>
-                <li><a href="index.html">HOME</a></li>
                 <li><a href="">Informatica</a></li>
                 <li><a href="">Sistemi e reti</a></li>
                 <li><a href="">Tpsit</a></li>
@@ -29,9 +42,18 @@
                 <li><a href="PCTO.html">PCTO</a></li>
             </ul>
         </nav>
-     </header>
-    <h1> Progetto dell'anno </h1>
+    </header>
+    
+    <h1 id="titolo"> Progetto dell'anno </h1>
 
+    <section>
+        <form name="registrazione">
+            <!-- input tipo text-->
+            <label for="nome">Nome</label>
+            <input type="text" id="fname" name="fname" value="">
+
+        </form>
+    </section>
     <footer class="barra-fondo">
         <div class="footer-content">
             <p class="testo-barra">

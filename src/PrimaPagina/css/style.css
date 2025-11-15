@@ -1,6 +1,10 @@
 /* margin di default 8px da strumenti per sviluppatori */
-body{
-    margin: auto;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* ← elimina la barra orizzontale */
+    box-sizing: border-box;
 }
 
 /* Problema di visualizzazione del titolo */
@@ -8,6 +12,17 @@ header h1
 {
     margin: auto;
 }
+
+/* regola per evitare di vedere aspetto de link  sottoloneato */
+header a
+{
+    text-decoration: none;
+}
+
+header h1:hover {
+    /*     background-color: rgb(250, 250, 250); */
+        text-decoration: red underline !important;
+    }
 
 header {
     margin: auto;
@@ -62,14 +77,15 @@ section
 
 /* Footer */
 .barra-fondo {
-    width: 100%;
-    background-color: var(--blu-primario);
+    width: 100vw; /* usa la larghezza esatta della finestra */
+    background-color: blue;
     padding: 1rem !important;
-    color: var(--bianco);
+    color: white;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    left: 0;
 }
 
 .footer-content {
@@ -78,8 +94,8 @@ section
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* <--- aggiungi questa */
-    align-items: center;      /* <--- e anche questa */
+    justify-content: center; 
+    align-items: center;      
 }
 
 
