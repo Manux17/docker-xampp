@@ -6,3 +6,5 @@ FROM Magazzini M
 SELECT COUNT(*) AS Numero_Burro
 FROM MateriePrime M NATURAL JOIN Ricette R
 WHERE R.Tipologia = "Burro";
+
+-- Numero di ingredienti utilizzati per ciascuon prodotto
