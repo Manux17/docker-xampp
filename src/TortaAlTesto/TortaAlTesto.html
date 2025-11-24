@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>FORM DI REGISTRAZIONE</title>
+    <meta charset="UTF-8">
+    <title>Form POST e GET</title>
 </head>
 
 <body>
+    <!-- FORM POST -->
+    <header>
+        <h1>Form con la POST</h1>
+    </header>
+
     <section>
+        <form name="Registrazione_post" method="POST" action="/risposta.php">
+            <label for="nome_post">Nome</label>
+            <input type="text" id="nome_post" name="nome_post"><br><br>
 
-        <!-- FORM con metodo POST -->
-        <form class="REGISTRAZIONE" method="POST" action="pagina_post.php">
-            <h2>Form con POST</h2>
+            <label for="email_post">Email</label>
+            <input type="email" id="email_post" name="email_post"><br><br>
 
-            <label>Nome:</label>
-            <input type="text" name="nome">
+            <label for="password_post">Password</label>
+            <input type="password" id="password_post" name="password_post"><br><br>
 
-            <label>email:</label>
-            <input type="text" name="cognome">
-
-            <label>Password:</label>
-            <input type="password" name="password">
-
-            <button type="submit">Invia con POST</button>
+            <input type="submit" value="Invia POST">
         </form>
-
-        <hr>
-
-        <!-- FORM con metodo GET -->
-        <form class="REGISTRAZIONE" method="GET" action="pagina_get.php">
-            <h2>Form con GET</h2>
-
-            <label>Nome:</label>
-            <input type="text" name="nome">
-
-            <label>email:</label>
-            <input type="text" name="cognome">
-
-            <label>Password:</label>
-            <input type="password" name="password">
-
-            <button type="submit">Invia con GET</button>
-        </form>
-
     </section>
+
+    <hr>
+    <!-- FORM GET -->
+    <header>
+        <h1>Form con la GET</h1>
+    </header>
+
+    <section>
+        <form name="Registrazione_get" method="GET" action="/risposta.php">
+            <label for="nome_get">Nome</label>
+            <input type="text" id="nome_get" name="nome_get"><br><br>
+
+            <label for="email_get">Email</label>
+            <input type="email" id="email_get" name="email_get"><br><br>
+
+            <label for="password_get">Password</label>
+            <input type="password" id="password_get" name="password_get"><br><br>
+
+            <input type="submit" value="Invia GET">
+        </form>
+    </section>
+
 </body>
 </html>
