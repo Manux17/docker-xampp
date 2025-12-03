@@ -1,0 +1,109 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #b30000, #8b0000);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ===== CARD CENTRALE ===== */
+.container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 380px;
+    padding: 35px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    animation: fadeIn 0.8s ease;
+}
+
+/* Titolo */
+.container h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #b30000;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+/* ===== INPUT ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: #b30000;
+    outline: none;
+    box-shadow: 0 0 5px rgba(179,0,0,0.4);
+}
+
+/* ===== BUTTON ===== */
+button {
+    padding: 12px;
+    background: #b30000;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #8b0000;
+}
+
+/* Link sotto */
+.bottom-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.bottom-text a {
+    color: #b30000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.bottom-text a:hover {
+    text-decoration: underline;
+}
+
+/* ===== ANIMAZIONE ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+
+    .container h1 {
+        font-size: 24px;
+    }
+}
