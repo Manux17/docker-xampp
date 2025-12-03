@@ -1,32 +1,37 @@
 <!DOCTYPE html>
-    <html lang="it">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="css.css">
-        <title>SECRET SANTA</title>
-        <link rel="icon" type="image/x-icon" href="immagini/babbo-natale-in-vespa.jpg">
-    </head>
-    <body>
-        <h1>Questa è la pagina LOGIN</h1>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css.css">
+    <title>SECRET SANTA</title>
+    <link rel="icon" type="image/x-icon" href="immagini/babbo-natale-in-vespa.jpg">
+</head>
 
-        <!-- sezione per il login-->
+<body>
+
+    <div class="container">
+        <h1>Login</h1>
+
+        <!-- Sezione Login -->
         <section>
             <form name="Login_POST" method="POST" action="login.php">
+
                 <label for="nome_post">Nome Utente</label>
-                <input type="nome" id="nome_post" name="nome_post"><br><br>
+                <input type="text" id="nome_post" name="nome_post" placeholder="Inserisci il tuo nome">
 
                 <label for="password_post">Password</label>
-                <input type="password" id="password_post" name="password_post"><br><br>
+                <input type="password" id="password_post" name="password_post" placeholder="Inserisci la password">
 
-                <input type="submit" value="LOGIN">
+                <button type="submit">LOGIN</button>
 
-                <!-- solo il tag a può puntare a una pagina, quindi faccio un 
-                bottone dentro il tag a che punta alla pagina di registrazione -->
-                <a href="signup.html">
-                    <button type="button">REGISTRATI</button>
-                </a>
+                <div class="bottom-text">
+                    Non hai un account?
+                    <a href="signup.html">Registrati</a>
+                </div>
+
             </form>
         </section>
-    </body> 
-</html>
+    </div>
 
+</body>
+</html>

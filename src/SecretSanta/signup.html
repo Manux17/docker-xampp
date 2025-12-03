@@ -1,25 +1,36 @@
 <!DOCTYPE html>
-    <html lang="it">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
-        <title>SECRET SANTA</title>
-        <link rel="icon" type="image/x-icon" href="immagini/babbo-natale-in-vespa.jpg">
-    </head>
-    <body>
-        <h1>Questa è la pagina di REGISTRAZIONE</h1>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css.css">
+    <title>SECRET SANTA</title>
+    <link rel="icon" type="image/x-icon" href="immagini/babbo-natale-in-vespa.jpg">
+</head>
 
-        <!-- sezione per il login-->
+<body>
+
+    <div class="container">
+        <h1>Registrazione</h1>
+
         <section>
-            <form name="Login_POST" method="POST" action=" signup.php">
+            <form name="Registrazione_POST" method="POST" action="signup.php">
+
                 <label for="nome_post">Nome Utente</label>
-                <input type="nome" id="nome_post" name="nome_post"><br><br>
+                <input type="text" id="nome_post" name="nome_post" placeholder="Inserisci il nome utente" required>
 
                 <label for="password_post">Password</label>
-                <input type="password" id="password_post" name="password_post"><br><br>
+                <input type="password" id="password_post" name="password_post" placeholder="Crea una password" required>
 
-                <input type="submit" value="REGISTRATI">
+                <button type="submit">REGISTRATI</button>
+
+                <div class="bottom-text">
+                    Hai già un account? Te devi sveglia che potevi accedere prima
+                    <a href="login.html">Accedi</a>
+                </div>
+
             </form>
         </section>
-    </body> 
+    </div>
+
+</body>
 </html>
