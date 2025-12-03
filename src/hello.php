@@ -34,6 +34,15 @@
     echo "Password: " . $row['password'] . "<br>";
     echo "<br>";
 
+    if($result->num_rows > 0)
+    {
+        echo "LOGIN CORRETTO";
+    }
+    else
+    {
+        echo "LOGIN FALLITO";
+    }
+
     //voglio visualizzare i dati dentro la tabella User
     $query = "SELECT * FROM User";
     $result = $connection->query($query);
