@@ -2,7 +2,8 @@
 session_start(); 
 
 // Controlla se l'utente è loggato
-if(!isset($_SESSION['utente'])) {
+if(!isset($_SESSION['utente'])) 
+{
     header("Location: login.php");
     exit();
 }
@@ -15,7 +16,8 @@ $port = 3306;
 
 $connection = new mysqli($host, $user, $password, $dbname, $port);
 
-if ($connection->connect_error) {
+if ($connection->connect_error) 
+{
     die("Errore di connessione: " . $connection->connect_error);
 }
 
@@ -23,20 +25,25 @@ $nome = $_SESSION['utente'];
 $messaggio = "";
 
 // Esegui la logica solo se l'utente preme il pulsante
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['scopri'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['scopri'])) 
+{
     // Controlla se l'utente ha già un abbinamento
     $query = "SELECT Abbinato FROM Abbinamenti WHERE Utente = '$nome'";
     $result = $connection->query($query);
 
-    if($result->num_rows > 0) {
+    if($result->num_rows > 0) 
+    {
         $row = $result->fetch_assoc();
         $messaggio = "Il tuo Secret Santa è: " . $row['Abbinato'] . " 🎁";
-    } else {
+    }
+    else 
+    {
         // Prendi tutti gli utenti
         $query = "SELECT Nome FROM Utenti";
         $result = $connection->query($query);
         $utenti = [];
-        while($row = $result->fetch_assoc()) {
+        while($row = $result->fetch_assoc()) 
+        {
             $utenti[] = $row['Nome'];
         }
 
@@ -46,17 +53,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['scopri'])) {
         // Rimuovi i nomi già assegnati ad altri
         $query = "SELECT Abbinato FROM Abbinamenti";
         $result = $connection->query($query);
-        while($row = $result->fetch_assoc()) {
+        while($row = $result->fetch_assoc()) 
+        {
             $possibili = array_diff($possibili, [$row['Abbinato']]);
         }
 
         // Scegli un nome a caso dai disponibili
-        if(count($possibili) > 0) {
+        if(count($possibili) > 0) 
+        {
             $assegnato = $possibili[array_rand($possibili)];
             $query = "INSERT INTO Abbinamenti (Utente, Abbinato) VALUES ('$nome', '$assegnato')";
             $connection->query($query);
             $messaggio = "Il tuo Secret Santa è: $assegnato 🎁";
-        } else {
+        } 
+        else 
+        {
             $messaggio = "Spiacente, nessun utente disponibile.";
         }
     }

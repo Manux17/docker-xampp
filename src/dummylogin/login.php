@@ -18,20 +18,51 @@
             die("Errore di connessione: " . $connection->connect_error);
         }
 
-        $email = $_POST['email_post']; //email_post è la chiave del nostro array
-        $password = $_POST['password_post'];
+        $email = htmlspecialchars($_POST['email_post']); //email_post è la chiave del nostro array
+        $password = htmlspecialchars($_POST['password_post']);
         $nome = $_POST['nome_post'];
 
-        $query = "SELECT * FROM User WHERE email = '$email' AND password = '$password'";
+        $stmt = $connection->prepare("SELECT * FROM User WHERE email = ? AND password = ?");
 
-        $result = $connection->query($query);
-        
-        $row = $result->fetch_assoc();
+        $stmt->bind_param("ss", $email, $password); //sostituisce rispetto all'ordine della query passandogli il tipo di dato s -> stringa 
+        // e il valore della variabile
+
+        $stmt->execute(); //esegue la query
+
+        $result = $stmt->get_result();
 
         if ($result->num_rows > 0) 
         {   
             echo "utente trovato" . "<br>"; 
-            echo "<h1> Benvenuto " . $row['nome'] . "</h1>" . "<br>";
+            if($email == 'anna.moretti@example.com')
+            {
+                $query = "SELECT * FROM User";
+                $result = $connection->query($query);
+                echo "La tabella user contiene le seguenti righe $result->num_rows:<br>";
+
+                echo var_dump($result);
+                
+                echo "<table>";
+                echo "<table border = 1>";
+                echo "<tr>";
+                echo "<th> </th>";
+                echo "<th>Email</th>";
+                echo "<th>Password</th>";
+                echo "</tr>";
+
+                while($row = $result->fetch_assoc()) //anche non essendoci nessun controllo smette l'esecuzione quando fetch_assoc ritorna null
+                {
+                    echo "<tr>";
+                    echo "<td>". $row['nome'] . "</td>";
+                    echo "<td>". $row['email'] . "</td>";
+                    echo "<td>". $row['password'] . "</td>";
+                    echo "</tr>";
+                }
+
+                echo "</table>";
+
+
+            }
         }
         else
         {
