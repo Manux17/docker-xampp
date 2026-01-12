@@ -19,7 +19,7 @@
 
     if($results->num_rows > 0)
     {
-        echo "<h1>" . "T'hanne rubato il nome cogl'Ion" . "</h1>";
+        echo "<h1>" . "T'hanne rubato il nome" . "</h1>";
     }
     else
     {
