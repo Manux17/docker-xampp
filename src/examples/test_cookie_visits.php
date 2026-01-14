@@ -1,12 +1,14 @@
 <?php
-$cookie_name = 'visite';
 
-if (isset($_COOKIE[$cookie_name]))
-    $visite = $_COOKIE[$cookie_name] + 1;
-else
-    $visite = 1;
+    $cookie_name = 'visite';
 
-setcookie($cookie_name, $visite, time() + (86400 * 30));
+    if (isset($_COOKIE[$cookie_name]))
+        $visite = $_COOKIE[$cookie_name] + 1;
+    else
+        $visite = 1;
 
-echo "Hai visitato questa pagina " . $visite . " volte.";
+    // ogni volta mi crea un nuovo cookie sovrascrivendo il cookie precedente
+    setcookie($cookie_name, $visite, time() + (86400 * 30));
+
+    echo "Hai visitato questa pagina " . $visite . " volte.";
 ?>
