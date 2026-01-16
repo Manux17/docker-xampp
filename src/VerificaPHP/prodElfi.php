@@ -44,7 +44,7 @@
                 echo ($row['numeroUnità']) . '<br>' ;
             }
         }
-
+        
         echo '<br>';
         echo "Vuoi ritornare alla home?";
         echo '<a href=dashboard.php> HOME </a>';
