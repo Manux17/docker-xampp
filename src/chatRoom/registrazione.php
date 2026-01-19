@@ -33,6 +33,7 @@
         else 
         {
             // Inserimento nel DB
+            $password = sha256($password);
             $stmt = $connection->prepare("INSERT INTO Utenti (user, password) VALUES (?, ?)");
             $stmt->bind_param("ss", $username, $password);
 

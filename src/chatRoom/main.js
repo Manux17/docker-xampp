@@ -7,13 +7,32 @@ async function hashPassword(password)
     return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-document.getElementById("login").addEventListener("submit", async function (e) 
+login = document.getElementById("LOGIN");
+if (login !== null)
 {
-    e.preventDefault();
+    login.addEventListener("submit", async function (e) 
+    {
+        e.preventDefault();
+    
+        const passwordInput = document.getElementById("password");
+        const hashedPassword = await hashPassword(passwordInput.value);
+    
+        passwordInput.value = hashedPassword;
+        this.submit();
+    });
+}
 
-    const passwordInput = document.getElementById("password");
-    const hashedPassword = await hashPassword(passwordInput.value);
-
-    passwordInput.value = hashedPassword;
-    this.submit();
-});
+registrazione = document.getElementById("REGISTRAZIONE");
+if (registrazione !== null)
+{
+    registrazione.addEventListener("submit", async function (e) 
+    {
+        e.preventDefault();
+    
+        const passwordInput = document.getElementById("password");
+        const hashedPassword = await hashPassword(passwordInput.value);
+    
+        passwordInput.value = hashedPassword;
+        this.submit();
+    });
+}
