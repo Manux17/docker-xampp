@@ -32,7 +32,7 @@
             if (password_verify($password, $hashSalvato)) 
             {
                 session_start();
-                $_SESSION['user']=$username;
+                $_SESSION['username']= $username;
                 header("Location: dashboard.php");
             } 
             else 
