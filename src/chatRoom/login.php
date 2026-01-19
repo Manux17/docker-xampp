@@ -29,8 +29,7 @@
             $row = $result->fetch_assoc();
             $hashSalvato = $row['password'];
 
-
-            if ($password === $hashSalvato) 
+            if (password_verify($password, $hashSalvato)) 
             {
                 session_start();
                 $_SESSION['user']=$username;

@@ -1,4 +1,5 @@
 <?php
+
 // Verifica se il form è stato inviato
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recupera il nome e il valore del cookie dal form

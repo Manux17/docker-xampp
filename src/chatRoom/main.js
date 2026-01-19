@@ -12,6 +12,7 @@ if (login !== null)
 {
     login.addEventListener("submit", async function (e) 
     {
+        console.log("CIAO CIAO");
         e.preventDefault();
     
         const passwordInput = document.getElementById("password");
@@ -27,6 +28,7 @@ if (registrazione !== null)
 {
     registrazione.addEventListener("submit", async function (e) 
     {
+        console.log("CIAO CIAO");
         e.preventDefault();
     
         const passwordInput = document.getElementById("password");

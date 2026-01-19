@@ -33,9 +33,9 @@
         else 
         {
             // Inserimento nel DB
-            $password = sha256($password);
+            $passwordHashata = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $connection->prepare("INSERT INTO Utenti (user, password) VALUES (?, ?)");
-            $stmt->bind_param("ss", $username, $password);
+            $stmt->bind_param("ss", $username, $passwordHashata);
 
             if ($stmt->execute()) 
             {
