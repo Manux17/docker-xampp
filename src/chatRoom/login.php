@@ -5,18 +5,7 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $host = 'db'; 
-        $dbname = 'Chatroom'; 
-        $user = 'user';
-        $pass = 'user';
-        $port = 3306;
-
-        $connection = new mysqli($host, $user, $pass, $dbname, $port);
-
-        if ($connection->connect_error) 
-        {
-            die("Errore di connessione: " . $connection->connect_error);
-        }
+        require_once("db.php");
 
         $stmt = $connection->prepare("SELECT password FROM Utenti WHERE user = ?");
         $stmt->bind_param("s", $username);
