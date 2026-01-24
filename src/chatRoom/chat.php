@@ -1,11 +1,30 @@
 <?php
-
     session_start();
+
+    //
     if(isset($_SESSION['username']) && $_GET && isset($_GET['stanza']))
     {
         require_once("db.php");
         $stanza = $_GET['stanza'];
 
+        // GESTIONE INVIO MESSAGGIO (POST)
+        if($_POST && isset($_POST['messaggio']))
+        {
+            $messaggio = $_POST['messaggio'];
+            $username = $_SESSION['username'];
+            
+            if(!empty($messaggio)) // se il messaggio non è vuoto
+            {
+                $stmt = $connection->prepare("INSERT INTO Messaggi (nomeStanza, user, testo, data) VALUES (?, ?, ?, NOW())");
+                $stmt->bind_param("sss", $stanza, $username, $messaggio);
+                $stmt->execute();
+            }
+        }
+
+        // VISUALIZZAZIONE MESSAGGI
+        echo "ECCO LA CHAT: " . ($stanza) . " TU SEI: " . ($_SESSION['username']);
+        echo("<br>");
+        
         $stmt = $connection->prepare("SELECT * FROM Messaggi WHERE nomeStanza=? ORDER BY data");
         $stmt->bind_param("s", $stanza); 
         $stmt->execute();
@@ -27,22 +46,25 @@
         else
         {
             echo "Nessun messaggio trovato";
-        
         }
+        
     }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chat</title>
 </head>
 <body>
-
-    fare il coso per mandare i messaggi
-
-</form>
+    <br>
+    <br>
+    <form method="POST" action="">
+        <label for="messaggio">Scrivi un messaggio:</label><br>
+        <input type="text" id="messaggio" name="messaggio">
+        <button type="submit">Invia</button>
+    </form>
 </body>
 </html>
