@@ -25,5 +25,9 @@
 
         echo "<br>";
         echo "<a href='nuovachat.php'> CREA UN NUOVA CHAT </a>";
+
+        echo "<br>";
+        echo "<br>";
+        echo "<a href='login.html'> LOGOUT";
     }
 ?>

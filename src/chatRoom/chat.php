@@ -1,7 +1,6 @@
 <?php
     session_start();
 
-    //
     if(isset($_SESSION['username']) && $_GET && isset($_GET['stanza']))
     {
         require_once("db.php");
@@ -61,10 +60,14 @@
 <body>
     <br>
     <br>
-    <form method="POST" action="">
+    <form name="invioMess" method="POST" action="">
         <label for="messaggio">Scrivi un messaggio:</label><br>
         <input type="text" id="messaggio" name="messaggio">
         <button type="submit">Invia</button>
     </form>
+
+    <br>
+    <br>
+    <a href='dashboard.php'> Torna alla dashboard </a>
 </body>
 </html>
