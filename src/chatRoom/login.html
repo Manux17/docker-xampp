@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
     <title>LOGIN</title>
 </head>
 <body>
     <section>
         <form id="LOGIN" name="LOGIN" method="POST" action="login.php">
 
-            <label for="nome_post">Usersname</label>
-            <input type="text" id="username" name="username">
+            <label class="label" for="nome_post">Usersname</label>
+            <input class="input" type="text" id="username" name="username" />
+            
+            <label class="label" for="password_post">Password</label>
+            <input class="input" type="password" id="password" name="password">
 
-            <label for="password_post">Password</label>
-            <input type="password" id="password" name="password">
-
-            <button type="submit">LOGIN</button>
+            <button class="button is-danger" type="submit">LOGIN</button>
 
         </form>
 
-            <a href="registrazione.html"> REGISTRATI </a>
-        
+        <a href="registrazione.html" class="button">REGISTRATI</a> 
     </section>
 
     <!-- IMPORT DEL FILE JS -->
