@@ -46,6 +46,15 @@
         {
             echo "Nessun messaggio trovato";
         }
+
+        // CONTROLLO NUOVO UTENTE
+        if($_POST && isset($_POST['nomeUtente']))
+        {
+            $utente = $_POST['nomeUtente'];
+
+            $stmt = $connection->prepare("SELECT ")
+
+        }
         
     }
 ?>
@@ -65,6 +74,28 @@
         <input type="text" id="messaggio" name="messaggio">
         <button type="submit">Invia</button>
     </form>
+
+    <?php
+        $stmt = $connection->prepare("SELECT creatore FROM Stanze WHERE nome=?");
+        $stmt->bind_param("s", $stanza);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if($result->num_rows > 0)
+        {
+            $result = $result->fetch_assoc();
+            if($_SESSION['username'] === $result['creatore'])
+            {
+                echo "<br>";
+                echo "<br>";
+                echo "<form name='nuovoUtente' method='POST' action=''>";
+                    echo "<label for='nomeUtente'>Utente da aggiungere:</label><br>";
+                    echo "<input type='text' id='nomeUtente' name='nomeUtente'>";
+                    echo "<button type='submit'>Invia</button>";
+                echo "</form>";
+            }
+        }
+    ?>
 
     <br>
     <br>
