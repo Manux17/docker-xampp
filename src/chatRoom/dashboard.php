@@ -68,7 +68,7 @@
                     while($row = $result->fetch_assoc())
                     {
                         echo "<div class='box mb-3'>";
-                        echo "  <a href='chat.php?stanza=" . $row['nome'] . "' class='button is-link is-fullwidth has-text-left'>";
+                        echo "  <a href='chat.php?stanza=" . htmlspecialchars($row['nome']) . "' class='button is-link is-fullwidth has-text-left'>";
                         echo        $row['nome'];
                         echo "  </a>";
                         echo "</div>";

@@ -11,6 +11,7 @@
         // Nome della stanza corrente
         $stanza = $_GET['stanza'];
 
+
         /* =====================================================
            GESTIONE INVIO MESSAGGIO (REQUEST POST)
            ===================================================== */
@@ -172,7 +173,7 @@
                     <p>Utente partecipa già alla stanza.</p>
                 </div>
 
-            <?php } else if($utenteEsiste) { ?>
+            <?php } elseif (!$utenteEsiste) { ?>
                 <div class="notification is-danger">
                     <button class="delete"></button>
                     <p>Utente non esistente.</p>
