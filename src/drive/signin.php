@@ -12,7 +12,7 @@
         $stmt->execute();
         $result = $stmt->get_result();
 
-        if ($result->num_rows > 0) 
+        if($result->num_rows > 0) 
         {
             $messaggio = "Utente già esistente!";
         } 
@@ -26,13 +26,13 @@
             if ($stmt->execute()) 
             {
                 echo'Registrazione completata! Accedi al tuo account.';
-                echo "<a href='login.php'>Torna al login</a>";
             } 
             else 
             {
                 echo 'Errore durante la registrazione.';
             }
         }
+        echo "<a href='login.php'>Torna al login</a>";
     }
 ?>
 
