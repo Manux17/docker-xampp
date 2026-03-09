@@ -20,7 +20,7 @@
                 session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['username'] = $row['username'];
-                header("Location: dashboard.php");
+                header("Location:dashboard.php");
             }
             else
             {

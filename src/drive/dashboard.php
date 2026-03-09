@@ -1,11 +1,10 @@
 <?php
     session_start();
     
-    if($_SESSION && isset($_SESSION['email']) && $_POST && isset($_POST['submit']) && isset($_FILES))
+    if($_SESSION && isset($_SESSION['email']))
     {
         echo "Ciao, $_SESSION[username]!";
         echo "<br><br>";
-
         require_once("db.php");
 
         $stmt = $connection->prepare("SELECT f.ID, f.nome, f.data FROM FILES f JOIN OWN o ON f.ID = o.ID WHERE o.email = ?");
@@ -26,30 +25,34 @@
             echo "Non hai ancora nessun file.";
         }
 
-        if(isset($_FILES['file']))
+
+        if($_POST && isset($_POST['submit']) && isset($_FILES))
         {
-            $percorso = $_FILES['file']['tmp_name'];
-    
-            if(file_exists($percorso))
+            if(isset($_FILES['file']))
             {
-                $nome = $_FILES['file']['name'];
-                $contenuto = file_get_contents($percorso);
-
-                $stmt = $connection->prepare("INSERT INTO FILES (nome, data, contenuto) VALUES (?, NOW(), ?)");
-                $stmt->bind_param("s", $nome, $contenuto);
-                $stmt->execute();
-
-                $connection->insert_id; 
-                $stmt2 = $connection->prepare("INSERT INTO OWN (ID, email) VALUES (?, ?)"); 
-                $stmt2->bind_param("is", $fileId, $_SESSION['email']); 
-                $stmt2->execute();
-
-
+                $percorso = $_FILES['file']['tmp_name'];
+        
+                if(file_exists($percorso))
+                {
+                    $nome = $_FILES['file']['name'];
+                    $contenuto = file_get_contents($percorso);
+    
+                    $stmt = $connection->prepare("INSERT INTO FILES (nome, data, contenuto) VALUES (?, NOW(), ?)");
+                    $stmt->bind_param("ss", $nome, $contenuto);
+                    $stmt->execute();
+    
+                    $fileId = $connection->insert_id;  // ← salva il valore!
+                    $stmt2 = $connection->prepare("INSERT INTO OWN (ID, email) VALUES (?, ?)"); 
+                    $stmt2->bind_param("is", $fileId, $_SESSION['email']); 
+                    $stmt2->execute();
+    
+                    echo "File caricato correttamente!";
+                }
 
             }
+    
         }
-
-
+        
         echo "<br>";
         echo "<a href='login.php'>Ritorna al login</a>";
     }

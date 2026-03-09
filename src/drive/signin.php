@@ -1,5 +1,5 @@
 <?php
-    if ($_POST && isset($_POST['username']) && isset($_POST['password'])&& isset($_POST['email'])) 
+    if ($_POST && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) 
     {
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -20,10 +20,11 @@
         {
             $passwordHashata = password_hash($password, PASSWORD_DEFAULT);
 
-            $stmt = $connection->prepare("INSERT INTO USERS (username, password, email) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $username, $passwordHashata, $email);
-
-            if ($stmt->execute()) 
+            $stmt = $connection->prepare("INSERT INTO USERS (email, username, password) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $email, $username, $passwordHashata);
+            $stmt->execute();
+            $row = $stmt->affected_rows;
+            if($row > 0) 
             {
                 echo'Registrazione completata! Accedi al tuo account.';
             } 
