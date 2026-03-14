@@ -3,17 +3,14 @@ const btn_carica = document.getElementById("btn_carica");
 const tbl_post = document.getElementById("tbl_post");
 btn_carica.addEventListener('click', riempiTabella);
 
-function riempiTabella()
+//avendo il metodo scaricaPost come async, qunado lo richiamamo dobbiamo mettere await
+async function riempiTabella()
 {
     console.log("riempi Tabella");
-    scaricaPost();
-}                                                       
+    let datiPost = await scaricaPost();
 
-async function scaricaPost()
-{
-    const risposta = await fetch(api_url);
-    const datiPost = await risposta.json();
-    //console.log(datiPost[0]);
+    tbl_post.innerHTML = ""; 
+
     for (const i in datiPost)
     {
         //console.log(datiPost[i]["title"]);
@@ -23,4 +20,12 @@ async function scaricaPost()
         row.insertCell(2).textContent = datiPost[i]["title"];
         row.insertCell(3).textContent = datiPost[i]["body"];
     }
+}                                                       
+
+//prendiamo il JSON e facciamo la return 
+async function scaricaPost()
+{
+    const risposta = await fetch(api_url);
+    const datiPost = await risposta.json();
+    return datiPost;
 }
