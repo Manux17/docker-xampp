@@ -7,15 +7,30 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="btn_carica">Click Me</button>
-    <table id="tbl_post">
-      <tr>
-        <th>userID</th>
-        <th>id</th>
-        <th>title</th>
-        <th>body</th>
-      </tr>
-    </table>
-    <script src = "main.js"></script>
+
+  <form>
+    <label name="name">name</label>
+    <input type="text" name="name" id="name">
+
+    <label name="description">description</label>
+    <input type="text" name="description" id="description">
+
+    <label name="price">price</label>
+    <input type="text" name="price" id="price">
+
+    <button id="btn_invia">Invia dati</button>
+  </form>
+
+  <button id="btn_carica">Click Me</button>
+  <table id="tbl_post">
+    <tr>
+      <th>product_id</th>
+      <th>name</th>
+      <th>description</th>
+      <th>price</th>
+    </tr>
+  </table>
+    
+  <script src = "main.js"></script>
 </body>
 </html>
