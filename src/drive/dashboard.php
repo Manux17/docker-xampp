@@ -1,74 +1,101 @@
 <?php
-    session_start();
-    
-    if($_SESSION && isset($_SESSION['email']))
+session_start();
+require_once("db.php");
+
+// Se l'utente non è loggato, reindirizza al login
+if (!isset($_SESSION['email'])) 
+{
+    header("Location: login.php");
+}
+
+$email = $_SESSION['email'];
+$username = $_SESSION['username'];
+
+// DOWNLOAD
+// Se l'utente clicca su un file, lo scarica
+if (isset($_GET['download']) && is_numeric($_GET['download'])) 
+{
+    $id = (int)$_GET['download'];
+
+    // Prendo il file dal DB solo se appartiene all'utente loggato
+    $stmt = $connection->prepare("SELECT f.nome, f.contenuto FROM FILES f JOIN OWN o ON f.ID = o.ID WHERE f.ID = ? AND o.email = ?");
+    $stmt->bind_param("is", $id, $email);
+    $stmt->execute();
+    $row = $stmt->get_result();
+    $dati = $row->fetch_assoc();
+
+    if ($dati) 
     {
-        echo "Ciao, $_SESSION[username]!";
-        echo "<br><br>";
-        require_once("db.php");
-
-        $stmt = $connection->prepare("SELECT f.ID, f.nome, f.data FROM FILES f JOIN OWN o ON f.ID = o.ID WHERE o.email = ?");
-        $stmt->bind_param("s", $_SESSION['email']);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if($result->num_rows > 0)
-        {
-            echo "I tuoi file:<br><br>";
-            while($row = $result->fetch_assoc())
-            {
-                echo "- $row[nome] - creato il: $row[data] <br>";
-            }
-        }
-        else
-        {
-            echo "Non hai ancora nessun file.";
-        }
-
-
-        if($_POST && isset($_POST['submit']) && isset($_FILES))
-        {
-            if(isset($_FILES['file']))
-            {
-                $percorso = $_FILES['file']['tmp_name'];
-        
-                if(file_exists($percorso))
-                {
-                    $nome = $_FILES['file']['name'];
-                    $contenuto = file_get_contents($percorso);
-    
-                    $stmt = $connection->prepare("INSERT INTO FILES (nome, data, contenuto) VALUES (?, NOW(), ?)");
-                    $stmt->bind_param("ss", $nome, $contenuto);
-                    $stmt->execute();
-    
-                    $fileId = $connection->insert_id;  // ← salva il valore!
-                    $stmt2 = $connection->prepare("INSERT INTO OWN (ID, email) VALUES (?, ?)"); 
-                    $stmt2->bind_param("is", $fileId, $_SESSION['email']); 
-                    $stmt2->execute();
-    
-                    echo "File caricato correttamente!";
-                }
-
-            }
-    
-        }
-        
-        echo "<br>";
-        echo "<a href='login.php'>Ritorna al login</a>";
-    }
-    else
+        header('Content-Disposition: attachment; filename="' . $dati['nome'] . '"');
+        echo $dati['contenuto'];
+    } 
+    else 
     {
-        header("Location: login.php");    
+        echo "File non trovato.";
     }
+}
+
+// UPLOAD
+// Se l'utente ha inviato un file tramite il form
+$messaggio = "";
+if (isset($_POST['submit'])) 
+{
+    $nome = $_FILES['file']['name'];
+    $contenuto = file_get_contents($_FILES['file']['tmp_name']);
+
+    // Inserisco il file nel DB
+    $stmt = $connection->prepare("INSERT INTO FILES (nome, data, contenuto) VALUES (?, NOW(), ?)");
+    $stmt->bind_param("sb", $nome, $contenuto);
+    $stmt->execute();
+
+    // Collego il file all'utente
+    $id = $connection->insert_id;
+    $stmt2 = $connection->prepare("INSERT INTO OWN (ID, email) VALUES (?, ?)");
+    $stmt2->bind_param("is", $id, $email); 
+    $stmt2->execute();
+
+    $messaggio = "File caricato correttamente!";
+}
+
+// Recupero tutti i file dell'utente loggato
+$stmt = $connection->prepare("SELECT f.ID, f.nome, f.data FROM FILES f JOIN OWN o ON f.ID = o.ID WHERE o.email = ? ORDER BY f.data DESC");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$files = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+echo "Ciao, " . htmlspecialchars($username) . "!<br><br>"; 
+if (!empty($files)) 
+{
+    echo "I tuoi file:<br>";
+    foreach ($files as $f) 
+    {
+        echo "- <a href='?download=" . $f['ID'] . "'>" . htmlspecialchars($f['nome']) . "</a> - creato il: " . $f['data'] . "<br>";
+    }
+} 
+else 
+{
+    echo "Non hai ancora nessun file.<br>";
+}
+
+if ($messaggio) 
+{
+    echo "<br>" . $messaggio . "<br>";
+}
+
+echo "<br>";
+echo "<a href='login.php'>Ritorna al login</a>";
 ?>
 
 <!DOCTYPE html>
-<html>
-    <body>
-        <form action="" method="post" enctype="multipart/form-data">
-            Seleziona il file da caricare:
-            <input type="file" name="file" id="file">
-            <input type="submit" value="Inserisci" name="submit">
-        </form>
-    </body>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data"> <!-- fix: mancava enctype -->
+        <input type="file" name="file">
+        <input type="submit" name="submit" value="Carica">
+    </form>
+</body>
 </html>
